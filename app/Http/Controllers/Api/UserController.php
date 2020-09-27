@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return response($users);
     }
 
     /**
@@ -25,7 +29,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required',
+            'name' => 'required',
+            'password' => 'nullable|min:8'
+        ]);
+
+        $user = new User([
+            'name' => $request->get("name"),
+            'email' => $request->get("email"),
+            'password' => Hash::make(request("password", "12345678")),
+            'role_id' => $request->get("role_id")
+        ]);
+
+        $user->save();
+        return response(["status" => 200, "message" => "OK"]);
     }
 
     /**
@@ -36,7 +54,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return response($user);
     }
 
     /**
@@ -48,7 +67,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if ($request->has('name')) {
+            $user->name = $request->get('name');
+        }
+
+        if ($request->has('password')) {
+            $user->password = Hash::make($request->get('password'));
+        }
+
+        if ($request->has('role_id')) {
+            $user->role_id = $request->get('role_id');
+        }
+        $user->save();
+        return response(["status" => 201, "message" => "OK"], 201);
     }
 
     /**
@@ -59,6 +91,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response(["status" => 202, "message" => "OK"], 202);
     }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -32,7 +34,8 @@ class UserController extends Controller
         $request->validate([
             'email' => 'required',
             'name' => 'required',
-            'password' => 'nullable|min:8'
+            'password' => 'nullable|min:8',
+            'role_id' => 'required|exists:roles,id'
         ]);
 
         $user = new User([
@@ -94,5 +97,28 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return response(["status" => 202, "message" => "OK"], 202);
+    }
+
+    public function generatePDF($id)
+    {
+        $user = User::findOrFail($id);
+        $uuid = Str::uuid()->toString();
+        $pdf_name = 'report.pdf';
+        $file_path = 'app/public/reports/'.$pdf_name;
+        view()->share('user', $user);
+        $file_url = 'http://localhost:8000/api/reports/'.$pdf_name;
+        $pdf = PDF::loadView('template1', ['user' => $user, 'file_url' => $file_url])->save(storage_path($file_path));
+//        return $pdf->download($pdf_name);
+        return response()->file(storage_path($file_path));
+    }
+
+    public function getReportPDF($file_name)
+    {
+        $pathToFile = storage_path('app/public/reports/'.$file_name);
+        if (is_file($pathToFile)) {
+            return response()->file($pathToFile);
+        } else {
+            return response(["status" => 404, "message" => "Not Found"], 404);
+        }
     }
 }

@@ -19,7 +19,7 @@ class CreateApplicationsTable extends Migration
             $table->foreign('application_type_id')->references('id')->on('application_types')->onDelete('set null');
             $table->unsignedBigInteger('applicant_user_id')->nullable();
             $table->foreign('applicant_user_id')->references('id')->on('users')->onDelete('set null');
-            $table->text('uri');
+            $table->text('uri')->nullable();
             $table->timestamps();
         });
     }

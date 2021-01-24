@@ -29,7 +29,7 @@ class PermissionTableSeeder extends Seeder
                 $permission_ids[] = $permission->id;
             }
         }
-        $admin_role = Role::where("name","ADMIN")->first();
+        $admin_role = Role::where("name", "ADMIN")->first();
         $admin_role->permissions()->attach($permission_ids);
     }
 }

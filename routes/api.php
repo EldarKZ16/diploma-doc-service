@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ApplicationController;
+use App\Http\Controllers\Api\SignDocsController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,16 +17,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:api'])->get('/user', function (Request $request) {
+
+Route::post('/v1/login', 'Api\AuthController@login');
+Route::middleware(['auth:api'])->get('/v1/user-context', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login', 'Api\AuthController@login');
-
 Route::group(['middleware' => ['auth:api', 'role_auth']], function (){
-    Route::apiResource('users', 'Api\UserController');
+    Route::apiResource('v1/users', 'Api\UserController');
 });
 
-Route::get('generatePDF/{user_id}', [\App\Http\Controllers\Api\UserController::class, 'generatePDF']);
+Route::group(['middleware' => ['auth:api'], 'role' => 'STUDENT'], function (){
+    Route::post('v1/application/submit-request', [ApplicationController::class, 'sendRequestForReport']);
+    Route::get('v1/applications', [ApplicationController::class, 'showApplications']);
+});
 
-Route::get('reports/{file_name}', [\App\Http\Controllers\Api\UserController::class, 'getReportPDF']);
+Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'DEAN'], function (){
+    Route::get('v1/sign-docs', [SignDocsController::class, 'showNeededToSignDocs']);
+    Route::post('v1/sign-docs/sign', [SignDocsController::class, 'signDocument']);
+});
+
+Route::get('v1/application/{file_name}', [ApplicationController::class, 'getPDFReport']);
+

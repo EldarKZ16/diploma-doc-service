@@ -3,21 +3,18 @@
 namespace App;
 
 use Amir\Permission\Models\Role;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class SignDocs extends Model
 {
-    use Notifiable, HasApiTokens;
-
+    //
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id'
+        'application_id', 'signer_role_id'
     ];
 
     /**
@@ -26,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'created_at', 'updated_at'
+        'created_at', 'updated_at'
     ];
 
     /**
@@ -34,9 +31,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+    ];
 
-    public function role() {
-        return $this->belongsTo(Role::class);
+    public function application() {
+        return $this->belongsTo(Application::class);
+    }
+
+    public function signerRole() {
+        return $this->belongsToMany(Role::class);
     }
 }

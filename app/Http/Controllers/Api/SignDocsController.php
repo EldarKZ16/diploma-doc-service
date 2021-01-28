@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\SignDocs;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -41,7 +42,7 @@ class SignDocsController extends Controller
         $sign_doc = SignDocs::find($request->sign_doc_id);
         $signed = $request->signed;
 
-        if ($user->role_id == $sign_doc->signer_role_id) {
+        if ($user->role_id == $sign_doc->signer_role_id && $sign_doc->signed == null) {
             $sign_doc->signed = $signed;
             $sign_doc->save();
 
@@ -86,15 +87,44 @@ class SignDocsController extends Controller
         $pdf_name = $uuid.'.pdf';
         $file_path = 'app/public/reports/'.$pdf_name;
         $file_url = 'http://localhost:8000/api/v1/application/'.$pdf_name;
+
+        $user_data = json_decode($user->campus_user_data, true);
+        $str_to_birth_time = strtotime($user_data["birthdate"]);
+        $birth_date = date('d.m.Y', $str_to_birth_time);
+
+        // FIX: get from environment
+        $fall = new DateTime('August 1');
+        $today = new DateTime();
+
+        $thisYear = date('Y');
+        $lastYear = date('Y', strtotime('-1 year'));
+
+        $current_year = $lastYear. " - ". $thisYear;
+        if ($today >= $fall) {
+            $nextYear = date('Y', strtotime('+1 year'));
+            $current_year = $thisYear. " - ". $nextYear;
+        }
+
+        $course_count = $user_data["studentCard"]["educationForm"]["courseCount"];
+
+        $str_to_start_time = strtotime($user_data["studentCard"]["universityStartDate"]);
+        $start_date = date('d.m.Y', $str_to_start_time);
+        $end_date = "30.06.".(date('Y', strtotime($start_date . "+".$course_count."years")));
+
+        $full_name = $user_data["lastname"]." ".$user_data["firstname"]." ".$user_data["middlename"];
         $data = (object) [
-            "birth_date" => "01.01.00",
-            "specialty_code" => "5B100200",
-            "specialty_name" => "СИБ",
-            "current_year" => "2021 - 2022",
-            "start_date" => "01.09.2017",
-            "end_date" => "30.06.2021"
+            "full_name" => $full_name,
+            "birth_date" => $birth_date,
+            "specialty_code" => $user_data["studentCard"]["specialization"]["speciality"]["code"],
+            "course" => $user_data["studentCard"]["course"],
+            "course_count" => $course_count,
+            "specialty_name" => $user_data["studentCard"]["specialization"]["speciality"]["professionnameru"],
+            "current_year" => $current_year,
+            "start_date" => $start_date,
+            "end_date" => $end_date,
+            "file_url" => $file_url
         ];
-        PDF::loadView('template1', ['user' => $user, 'file_url' => $file_url, 'data' => $data])->save(storage_path($file_path));
+        PDF::loadView('template1', ['data' => $data])->save(storage_path($file_path));
         return $file_url;
     }
 }

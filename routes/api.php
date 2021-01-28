@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApplicationController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\SignDocsController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -22,6 +23,10 @@ Route::post('/v1/login', 'Api\AuthController@login');
 Route::middleware(['auth:api'])->get('/v1/user-context', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/v1/logout', 'Api\AuthController@logout')->middleware(['auth:api']);
+
+Route::get('/v1/roles', 'Api\RoleController@index');
 
 Route::group(['middleware' => ['auth:api', 'role_auth']], function (){
     Route::apiResource('v1/users', 'Api\UserController');

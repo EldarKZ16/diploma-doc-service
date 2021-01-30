@@ -18,7 +18,7 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($login_data)) {
-            return response(['message' => 'Invalid Credentials']);
+            return response(['status' => 401, 'message' => 'Invalid Credentials'], 401);
         }
 
         $access_token = auth()->user()->createToken('authToken')->accessToken;
@@ -97,7 +97,7 @@ class AuthController extends Controller
                 return response(["status" => 403, "message" => "Not allowed, only students"], 403);
             }
         } else {
-            return response($json_response);
+            return response($json_response, 401);
         }
     }
 }

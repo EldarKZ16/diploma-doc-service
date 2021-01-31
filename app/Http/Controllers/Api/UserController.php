@@ -97,4 +97,10 @@ class UserController extends Controller
         return response(["status" => 202, "message" => "OK"], 202);
     }
 
+    public function showCampusInfo($id)
+    {
+        $user = User::findOrFail($id);
+        return response($user->campus_user_data);
+    }
+
 }

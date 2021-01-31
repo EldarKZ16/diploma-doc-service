@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ApplicationController;
 use App\Http\Controllers\Api\SignDocsController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,11 @@ Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'ADMIN'], fun
     Route::apiResource('v1/users', 'Api\UserController');
 });
 
+
 Route::group(['middleware' => ['auth:api']], function (){
     Route::apiResource('v1/application-types', 'Api\ApplicationTypeController');
     Route::get('v1/application/{id}', [ApplicationController::class, 'show']);
+    Route::get('v1/user/campus-info/{id}', [UserController::class, 'showCampusInfo']);
 });
 
 Route::group(['middleware' => ['auth:api'], 'role' => 'STUDENT'], function (){

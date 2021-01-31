@@ -27,7 +27,7 @@ class SignDocsController extends Controller
     public function showNeededToSignDocs(Request $request)
     {
         $user = $request->user();
-        $sign_docs = SignDocs::where('signer_role_id', $user->role_id)->where('signed', null)->get();
+        $sign_docs = SignDocs::with('application')->where('signer_role_id', $user->role_id)->where('signed', null)->get();
         return response($sign_docs);
     }
 

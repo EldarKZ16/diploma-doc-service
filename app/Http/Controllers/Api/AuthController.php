@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Amir\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -72,11 +73,12 @@ class AuthController extends Controller
                     $user->password = Hash::make($password);
                 } else {
                     $full_name = $user_data["data"]["lastname"]." ".$user_data["data"]["firstname"]." ".$user_data["data"]["middlename"];
+                    $role = Role::where("name", "STUDENT")->first();
                     $user = new User([
                         'name' => $full_name,
                         'email' => $email,
                         'password' => Hash::make($password),
-                        'role_id' => 1
+                        'role_id' => $role->id
                     ]);
                 }
                 $user->save();

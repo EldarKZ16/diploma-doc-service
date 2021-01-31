@@ -13,7 +13,7 @@ class ApplicationType extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'signer_orders'
+        'name', 'signer_orders', 'description'
     ];
 
     /**

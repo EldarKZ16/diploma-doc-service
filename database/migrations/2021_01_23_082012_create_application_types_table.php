@@ -17,6 +17,7 @@ class CreateApplicationTypesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->json('signer_orders');
+            $table->string('description');
             $table->timestamps();
         });
     }

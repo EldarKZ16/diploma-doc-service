@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
+    public function show($id)
+    {
+        $application = Application::findOrFail($id);
+        return response($application);
+    }
+
     //
     public function showApplications(Request $request) {
         $user = $request->user();

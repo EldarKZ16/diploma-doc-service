@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'ADMIN'], fun
 
 Route::group(['middleware' => ['auth:api']], function (){
     Route::apiResource('v1/application-types', 'Api\ApplicationTypeController');
+    Route::get('v1/application/{id}', [ApplicationController::class, 'show']);
 });
 
 Route::group(['middleware' => ['auth:api'], 'role' => 'STUDENT'], function (){

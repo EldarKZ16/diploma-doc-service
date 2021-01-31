@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ApplicationTypeController extends Controller
 {
-    //
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +29,17 @@ class ApplicationTypeController extends Controller
     {
         $application_type = ApplicationType::findOrFail($id);
         return response($application_type);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        return response(["status" => 200, "message" => "OK"]);
     }
 
     /**

@@ -28,6 +28,9 @@ Route::get('/v1/roles', 'Api\RoleController@index');
 
 Route::group(['middleware' => ['auth:api', 'role_auth']], function (){
     Route::apiResource('v1/users', 'Api\UserController');
+});
+
+Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'STUDENT'], function (){
     Route::apiResource('v1/application-types', 'Api\ApplicationTypeController');
 });
 

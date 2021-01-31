@@ -14,7 +14,7 @@ class ApplicationTypeSeeder extends Seeder
     {
         DB::table('application_types')->insert([
             'name' => 'template1',
-            'signer_orders' => json_encode([3, 2]),
+            'signer_orders' => json_encode([1, 3]),
             'description' => 'Справка по месту требования'
         ]);
     }

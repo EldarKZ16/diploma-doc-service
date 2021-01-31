@@ -38,6 +38,6 @@ class Application extends Model
     }
 
     public function applicant() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, "applicant_user_id");
     }
 }

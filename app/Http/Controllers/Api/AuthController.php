@@ -79,6 +79,7 @@ class AuthController extends Controller
                         'role_id' => 2
                     ]);
                 }
+                $user->save();
 
                 try {
                     $access_token = $user->createToken('authToken')->accessToken;

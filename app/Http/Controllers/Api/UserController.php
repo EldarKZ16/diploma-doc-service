@@ -103,4 +103,10 @@ class UserController extends Controller
         return response($user->campus_user_data);
     }
 
+    public function getContext(Request $request)
+    {
+        $user = User::with('role')->findOrFail($request->user()->id);
+        return response($user);
+    }
+
 }

@@ -21,9 +21,7 @@ Route::post('/v1/student-login', 'Api\AuthController@loginCampus');
 
 Route::post('/v1/login', 'Api\AuthController@login');
 Route::post('/v1/logout', 'Api\AuthController@logout')->middleware(['auth:api']);
-Route::middleware(['auth:api'])->get('/v1/user-context', function (Request $request) {
-    return $request->user();
-});
+Route::middleware(['auth:api'])->get('/v1/user-context', 'Api\UserController@getContext');
 
 Route::get('/v1/roles', 'Api\RoleController@index');
 

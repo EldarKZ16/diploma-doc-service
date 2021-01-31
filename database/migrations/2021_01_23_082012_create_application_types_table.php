@@ -15,7 +15,7 @@ class CreateApplicationTypesTable extends Migration
     {
         Schema::create('application_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->json('signer_orders');
             $table->timestamps();
         });

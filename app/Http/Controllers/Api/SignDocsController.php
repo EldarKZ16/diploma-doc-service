@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\ApplicationType;
 use App\Http\Controllers\Controller;
 use App\SignDocs;
 use App\User;
@@ -64,8 +65,10 @@ class SignDocsController extends Controller
                     ]);
                     $new_sign_doc->save();
                 } else {
+                    $application_template_name = $sign_doc->application->applicationType->name;
+
                     $applicant_user_id = $application->applicant_user_id;
-                    $generated_file_path = $this->generatePDFReport($applicant_user_id);
+                    $generated_file_path = $this->generatePDFReport($applicant_user_id, $application_template_name);
                     $application->uri = $generated_file_path;
                     $application->save();
                 }
@@ -80,7 +83,7 @@ class SignDocsController extends Controller
         }
     }
 
-    private function generatePDFReport($user_id)
+    private function generatePDFReport($user_id, $application_template_name)
     {
         $user = User::findOrFail($user_id);
         $uuid = Str::uuid()->toString();
@@ -124,7 +127,7 @@ class SignDocsController extends Controller
             "end_date" => $end_date,
             "file_url" => $file_url
         ];
-        PDF::loadView('template1', ['data' => $data])->save(storage_path($file_path));
+        PDF::loadView($application_template_name, ['data' => $data])->save(storage_path($file_path));
         return $file_url;
     }
 }

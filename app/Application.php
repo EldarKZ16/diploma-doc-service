@@ -36,4 +36,8 @@ class Application extends Model
     public function applicationType() {
         return $this->belongsTo(ApplicationType::class);
     }
+
+    public function applicant() {
+        return $this->belongsTo(User::class);
+    }
 }

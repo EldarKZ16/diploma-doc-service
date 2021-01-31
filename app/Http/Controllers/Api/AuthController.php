@@ -76,7 +76,7 @@ class AuthController extends Controller
                         'name' => $full_name,
                         'email' => $email,
                         'password' => Hash::make($password),
-                        'role_id' => 2
+                        'role_id' => 1
                     ]);
                 }
                 $user->save();

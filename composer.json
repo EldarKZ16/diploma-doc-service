@@ -69,6 +69,7 @@
         "post-install-cmd": [
             "php artisan clear-compiled",
             "mkdir storage/app/public/reports",
+            "cp /app/.env.example /app/.env",
             "chmod -R 777 storage",
             "php artisan passport:keys"
         ]

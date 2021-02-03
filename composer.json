@@ -64,12 +64,12 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
+            "php -r \"copy('.env.example', '.env');\"",
             "@php artisan key:generate --ansi"
         ],
         "post-install-cmd": [
             "php artisan clear-compiled",
             "mkdir storage/app/public/reports",
-            "cp /app/.env.example /app/.env",
             "chmod -R 777 storage",
             "php artisan passport:keys"
         ]

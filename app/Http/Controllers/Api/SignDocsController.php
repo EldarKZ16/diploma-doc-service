@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\ApplicationType;
 use App\Http\Controllers\Controller;
 use App\SignDocs;
 use App\User;
@@ -89,14 +88,16 @@ class SignDocsController extends Controller
         $uuid = Str::uuid()->toString();
         $pdf_name = $uuid.'.pdf';
         $file_path = 'app/public/reports/'.$pdf_name;
-        $file_url = 'http://localhost:8000/api/v1/application/'.$pdf_name;
+
+        $hostname = env("SERVER_HOSTNAME", "http://localhost:8000");
+        $file_url = $hostname."/api/v1/application/".$pdf_name;
 
         $user_data = json_decode($user->campus_user_data, true);
         $str_to_birth_time = strtotime($user_data["birthdate"]);
         $birth_date = date('d.m.Y', $str_to_birth_time);
 
-        // FIX: get from environment
-        $fall = new DateTime('August 1');
+        $fall_start_date = env("FALL_START_DATE", 'August 1');
+        $fall = new DateTime($fall_start_date);
         $today = new DateTime();
 
         $thisYear = date('Y');

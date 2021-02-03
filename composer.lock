@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e836426bf2e7f7cbab894652960ebc4e",
+    "content-hash": "ee433a01b0b9e149b52d021383249dcb",
     "packages": [
         {
             "name": "amir/laravel-permission",
@@ -1420,16 +1420,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.4.3",
+            "version": "3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "cd83b5421df3dbbbc66bd07a5b970c9efb6371b9"
+                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/cd83b5421df3dbbbc66bd07a5b970c9efb6371b9",
-                "reference": "cd83b5421df3dbbbc66bd07a5b970c9efb6371b9",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/c1123697f6a2ec29162b82f170dd4a491f524773",
+                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773",
                 "shasum": ""
             },
             "require": {
@@ -1444,9 +1444,6 @@
                 "phpunit/phpunit": "^5.7 || ^7.3",
                 "squizlabs/php_codesniffer": "~2.3"
             },
-            "suggest": {
-                "lcobucci/clock": "*"
-            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1456,12 +1453,7 @@
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\JWT\\": "src"
-                },
-                "files": [
-                    "compat/class-aliases.php",
-                    "compat/json-exception-polyfill.php",
-                    "compat/lcobucci-clock-polyfill.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1489,7 +1481,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-01-27T23:38:30+00:00"
+            "time": "2020-08-20T13:22:28+00:00"
         },
         {
             "name": "league/commonmark",
@@ -7687,8 +7679,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.2.5",
-        "ext-json": "*",
-        "ext-imagick": "*"
+        "ext-imagick": "*",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

@@ -90,7 +90,7 @@ class SignDocsController extends Controller
         $file_path = 'app/public/reports/'.$pdf_name;
 
         $hostname = env("SERVER_HOSTNAME", "http://localhost:8000");
-        $file_url = $hostname."/api/v1/application/".$pdf_name;
+        $file_url = $hostname."/api/v1/signed-application/".$pdf_name;
 
         $user_data = json_decode($user->campus_user_data, true);
         $str_to_birth_time = strtotime($user_data["birthdate"]);

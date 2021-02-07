@@ -22,12 +22,12 @@
     <div style="position:absolute;left:103.77px;top:273.41px" class="cls_003"><span class="cls_003">Дана гр. </span><span class="cls_004">{{$data->full_name}} {{$data->birth_date}}</span><span class="cls_003"> г.р.</span></div>
     <div style="position:absolute;left:148.77px;top:290.88px" class="cls_005"><span class="cls_005">(Ф.И.О. обучающегося/студента, с указанием года рождения)</span></div>
     <div style="position:absolute;left:103.77px;top:303.44px" class="cls_003"><span class="cls_003">В том, что он(а) действительно является студентом {{$data->course}} курса очного отделения</span></div>
-    <div style="position:absolute;left:81.27px;top:346.89px" class="cls_003"><span class="cls_003">в АО "Международного университета информационных технологий" по специальности «{{$data->specialty_code}}»-{{$data->specialty_name}}</span></div>
+    <div style="position:absolute;left:81.27px;top:356.89px" class="cls_003"><span class="cls_003">в АО "Международного университета информационных технологий" по специальности «{{$data->specialty_code}}»-{{$data->specialty_name}}</span></div>
     <div style="position:absolute;left:81.27px;top:436.22px" class="cls_003"><span class="cls_003">Гос.лицензия Серия АБ № 0064060 от 29.05.2009 год без ограничения срока</span></div>
     <div style="position:absolute;left:81.27px;top:483.11px" class="cls_003"><span class="cls_003">Справка действительна на {{$data->current_year}} учебный год</span></div>
     <div style="position:absolute;left:81.27px;top:508.55px" class="cls_003"><span class="cls_003">Справка выдана для предъявления по месту требования</span></div>
     <div style="position:absolute;left:81.27px;top:536.00px" class="cls_003"><span class="cls_003">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
-    <div style="position:absolute;left:81.27px;top:550.44px" class="cls_003"><span class="cls_003">Период обучения с {{$data->start_date}} г. по {{$data->end_date}} г.</span></div>
+    <div style="position:absolute;left:81.27px;top:560.44px" class="cls_003"><span class="cls_003">Период обучения с {{$data->start_date}} г. по {{$data->end_date}} г.</span></div>
     <div style="position:absolute;left:166.77px;top:734.38px" class="cls_004"><span class="cls_004">Декан</span></div>
     <div style="position:absolute;left:362.35px;top:734.38px" class="cls_004"><span class="cls_004">Мукажанов Н.К.</span></div>
     <div style="position:absolute;left:81.27px;top:882.34px" class="cls_005"><span class="cls_005">Исп: Самат А.</span></div>

@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $login_data = $request->validate([
-            'email' => 'email|required',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
@@ -37,17 +37,17 @@ class AuthController extends Controller
     public function loginCampus(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
-        $email = $request->get("email");
+        $username = $request->get("username");
         $password = $request->get("password");
 
 
         // TODO: remove hardcodes, ok for MVP
         $campus_auth_response = Http::asForm()->post("https://campus.iitu.kz/auth/login", [
-            "username" => $email,
+            "username" => $username,
             "password" => $password
         ]);
 
@@ -60,12 +60,12 @@ class AuthController extends Controller
             // Retrieve initial user data from campus
             $user_data_raw = Http::withCookies(
                 ["API-Token" => $campus_token], "campus.iitu.kz"
-            )->get("https://campus.iitu.kz/cleancoredb/user/byname/".$email);
+            )->get("https://campus.iitu.kz/cleancoredb/user/byname/".$username);
 
             $user_data = $user_data_raw->json();
 
             if ($user_data["data"]["isStudent"]) {
-                $user = User::where('email', $email);
+                $user = User::where('username', $username);
 
                 if ($user->exists()) {
                     // Update our user password according to campus user
@@ -76,7 +76,7 @@ class AuthController extends Controller
                     $role = Role::where("name", "STUDENT")->first();
                     $user = new User([
                         'name' => $full_name,
-                        'email' => $email,
+                        'username' => $username,
                         'password' => Hash::make($password),
                         'role_id' => $role->id
                     ]);

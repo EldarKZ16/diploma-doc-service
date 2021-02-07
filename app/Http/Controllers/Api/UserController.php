@@ -30,7 +30,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'name' => 'required',
             'password' => 'nullable|min:8',
             'role_id' => 'required|exists:roles,id'
@@ -38,7 +38,7 @@ class UserController extends Controller
 
         $user = new User([
             'name' => $request->get("name"),
-            'email' => $request->get("email"),
+            'username' => $request->get("username"),
             'password' => Hash::make(request("password", "12345678")),
             'role_id' => $request->get("role_id")
         ]);

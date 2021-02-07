@@ -46,6 +46,6 @@ Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'DEAN'], func
     Route::post('v1/sign-docs/sign', [SignDocsController::class, 'signDocument']);
 });
 
-Route::get('v1/application/{file_name}', [ApplicationController::class, 'getPDFReport']);
+Route::get('v1/signed-application/{file_name}', [ApplicationController::class, 'getPDFReport']);
 
 

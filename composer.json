@@ -9,6 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-imagick": "*",
+        "ext-json": "*",
         "amir/laravel-permission": "^1.0",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "fideloper/proxy": "^4.2",
@@ -17,8 +19,8 @@
         "laravel/framework": "^7.24",
         "laravel/passport": "^7.0",
         "laravel/tinker": "^2.0",
-        "simplesoftwareio/simple-qrcode": "^4.1",
-        "ext-json": "*"
+        "lcobucci/jwt": "3.3.3",
+        "simplesoftwareio/simple-qrcode": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -62,7 +64,14 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
+            "php -r \"copy('.env.example', '.env');\"",
             "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "mkdir storage/app/public/reports",
+            "chmod -R 777 storage",
+            "php artisan passport:keys"
         ]
     }
 }

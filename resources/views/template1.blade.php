@@ -23,14 +23,14 @@
         <div style="position:absolute;left:148.77px;top:290.88px" class="cls_005"><span class="cls_005">(Ф.И.О. обучающегося/студента, с указанием года рождения)</span></div>
         <div style="position:absolute;left:103.77px;top:303.44px" class="cls_003"><span class="cls_003">В том, что он(а) действительно является студентом {{$data->course}} курса очного отделения</span></div>
         <div style="position:absolute;left:81.27px;top:346.89px" class="cls_003"><span class="cls_003">в АО "Международного университета информационных технологий"</span></div>
-        <div style="position:absolute;left:81.27px;top:382.33px" class="cls_003"><span class="cls_003">по специальности «{{$data->specialty_code}}»-{{$data->specialty_name}}</span></div>
-        <div style="position:absolute;left:81.27px;top:416.22px" class="cls_003"><span class="cls_003">Гос.лицензия Серия АБ № 0064060 от 29.05.2009 год без ограничения срока</span></div>
-        <div style="position:absolute;left:81.27px;top:448.11px" class="cls_003"><span class="cls_003">Справка действительна на {{$data->current_year}} учебный год</span></div>
-        <div style="position:absolute;left:81.27px;top:463.55px" class="cls_003"><span class="cls_003">Справка выдана для предъявления по месту требования</span></div>
-        <div style="position:absolute;left:81.27px;top:481.00px" class="cls_003"><span class="cls_003">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
-        <div style="position:absolute;left:81.27px;top:515.44px" class="cls_003"><span class="cls_003">Период обучения с {{$data->start_date}} г. по {{$data->end_date}} г.</span></div>
-        <div style="position:absolute;left:166.77px;top:699.38px" class="cls_004"><span class="cls_004">Декан</span></div>
-        <div style="position:absolute;left:362.35px;top:699.38px" class="cls_004"><span class="cls_004">Мукажанов Н.К.</span></div>
+        <div style="position:absolute;left:81.27px;top:387.33px" class="cls_003"><span class="cls_003">по специальности «{{$data->specialty_code}}»-{{$data->specialty_name}}</span></div>
+        <div style="position:absolute;left:81.27px;top:426.22px" class="cls_003"><span class="cls_003">Гос.лицензия Серия АБ № 0064060 от 29.05.2009 год без ограничения срока</span></div>
+        <div style="position:absolute;left:81.27px;top:463.11px" class="cls_003"><span class="cls_003">Справка действительна на {{$data->current_year}} учебный год</span></div>
+        <div style="position:absolute;left:81.27px;top:478.55px" class="cls_003"><span class="cls_003">Справка выдана для предъявления по месту требования</span></div>
+        <div style="position:absolute;left:81.27px;top:496.00px" class="cls_003"><span class="cls_003">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
+        <div style="position:absolute;left:81.27px;top:530.44px" class="cls_003"><span class="cls_003">Период обучения с {{$data->start_date}} г. по {{$data->end_date}} г.</span></div>
+        <div style="position:absolute;left:166.77px;top:714.38px" class="cls_004"><span class="cls_004">Декан</span></div>
+        <div style="position:absolute;left:362.35px;top:714.38px" class="cls_004"><span class="cls_004">Мукажанов Н.К.</span></div>
         <div style="position:absolute;left:81.27px;top:822.34px" class="cls_005"><span class="cls_005">Исп: Самат А.</span></div>
         <div style="position:absolute;left:81.27px;top:832.90px" class="cls_005"><span class="cls_005">Тел.: 330-85-67 (внут.2063)</span></div>
         <div style="position:absolute;left:0px;top:0px">

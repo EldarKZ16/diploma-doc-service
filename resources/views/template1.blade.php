@@ -25,8 +25,8 @@
     <div style="position:absolute;left:81.27px;top:346.89px" class="cls_003"><span class="cls_003">в АО "Международного университета информационных технологий" по специальности «{{$data->specialty_code}}»-{{$data->specialty_name}}</span></div>
     <div style="position:absolute;left:81.27px;top:436.22px" class="cls_003"><span class="cls_003">Гос.лицензия Серия АБ № 0064060 от 29.05.2009 год без ограничения срока</span></div>
     <div style="position:absolute;left:81.27px;top:483.11px" class="cls_003"><span class="cls_003">Справка действительна на {{$data->current_year}} учебный год</span></div>
-    <div style="position:absolute;left:81.27px;top:498.55px" class="cls_003"><span class="cls_003">Справка выдана для предъявления по месту требования</span></div>
-    <div style="position:absolute;left:81.27px;top:516.00px" class="cls_003"><span class="cls_003">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
+    <div style="position:absolute;left:81.27px;top:508.55px" class="cls_003"><span class="cls_003">Справка выдана для предъявления по месту требования</span></div>
+    <div style="position:absolute;left:81.27px;top:536.00px" class="cls_003"><span class="cls_003">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
     <div style="position:absolute;left:81.27px;top:550.44px" class="cls_003"><span class="cls_003">Период обучения с {{$data->start_date}} г. по {{$data->end_date}} г.</span></div>
     <div style="position:absolute;left:166.77px;top:734.38px" class="cls_004"><span class="cls_004">Декан</span></div>
     <div style="position:absolute;left:362.35px;top:734.38px" class="cls_004"><span class="cls_004">Мукажанов Н.К.</span></div>

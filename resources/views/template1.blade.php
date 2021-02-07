@@ -32,7 +32,7 @@
     <div style="position:absolute;left:362.35px;top:734.38px" class="cls_004"><span class="cls_004">Мукажанов Н.К.</span></div>
     <div style="position:absolute;left:81.27px;top:882.34px" class="cls_005"><span class="cls_005">Исп: Самат А.</span></div>
     <div style="position:absolute;left:81.27px;top:892.90px" class="cls_005"><span class="cls_005">Тел.: 330-85-67 (внут.2063)</span></div>
-    <div style="position:absolute;left:362px;top:764px">
+    <div style="position:absolute;left:362px;top:882.34px">
         <img src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(125)->generate($data->file_url)) !!} ">
     </div>
 </div>

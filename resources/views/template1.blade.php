@@ -29,7 +29,7 @@
 
         <div style="left:103.77px;top:626.33px; margin-top: 30px; margin-left: 20px;" class="cls_004"><span style="margin-right: 200px;" class="cls_004">Декан</span> <span class="cls_004">Мукажанов Н.К.</span></div>
         <div style="left:81.27px;top:771.05px; margin-top: 30px;" class="cls_005"><span class="cls_005">Исп: Самат А.</span>
-            <img style="margin-left: 320px;" src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(125)->generate($data->file_url)) !!} ">
+            <img style="margin-left: 200px;" src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(125)->generate($data->file_url)) !!} ">
         </div>
         <div style="left:81.27px;top:781.61px" class="cls_005"><span class="cls_005">Тел.: 330-85-67 (внут.2063)</span></div>
     </div>

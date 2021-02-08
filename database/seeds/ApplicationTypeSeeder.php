@@ -23,5 +23,11 @@ class ApplicationTypeSeeder extends Seeder
             'signer_orders' => json_encode([1]),
             'description' => 'Приложение 2-1'
         ]);
+
+        DB::table('application_types')->insert([
+            'name' => 'template3',
+            'signer_orders' => json_encode([1]),
+            'description' => 'Приложение 4'
+        ]);
     }
 }

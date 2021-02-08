@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('username')->unique();
             $table->string('password')->default('12345678');
-            $table->json('campus_user_data');
+            $table->json('campus_user_data')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

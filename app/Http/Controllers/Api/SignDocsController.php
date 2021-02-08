@@ -8,6 +8,7 @@ use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class SignDocsController extends Controller
@@ -43,8 +44,6 @@ class SignDocsController extends Controller
         $signed = $request->signed;
 
         if ($user->role_id == $sign_doc->signer_role_id && $sign_doc->signed == null) {
-            $sign_doc->signed = $signed;
-            $sign_doc->save();
 
             $application = $sign_doc->application;
 
@@ -67,15 +66,40 @@ class SignDocsController extends Controller
                     $application_template_name = $sign_doc->application->applicationType->name;
 
                     $applicant_user_id = $application->applicant_user_id;
-                    $generated_file_path = $this->generatePDFReport($applicant_user_id, $application_template_name);
-                    $application->uri = $generated_file_path;
+                    $generated_file_result = $this->generatePDFReport($applicant_user_id, $application_template_name);
+
+                    $application->uri = $generated_file_result["file_url"];
                     $application->save();
+
+                    $pdf = $generated_file_result["pdf"];
+                    $data["name"] = "Студент ".$application->applicant->name;
+                    $data["email"] = $application->applicant->username."@edu.iitu.kz";
+                    $data["title"] = $sign_doc->application->applicationType->description;
+                    $data["body"] = "Ваш запрос выполнен!";
+
+                    Mail::send('emails.template', $data, function($message)use($data, $pdf) {
+                        $message->to($data["email"], $data["email"])
+                            ->subject($data["title"])
+                            ->attachData($pdf->output(), "report.pdf");
+                    });
                 }
 
             } else {
                 $application->uri = "Rejected by ".$user->role->name;
                 $application->save();
+
+                $data["name"] = "Студент ".$application->applicant->name;
+                $data["email"] = $application->applicant->username."@edu.iitu.kz";
+                $data["title"] = $sign_doc->application->applicationType->description;
+                $data["body"] = "Вам отказали в выдаче справки, обратитесь в деканат";
+
+                Mail::send('emails.template', $data, function($message)use($data) {
+                    $message->to($data["email"], $data["email"])
+                        ->subject($data["title"]);
+                });
             }
+            $sign_doc->signed = $signed;
+            $sign_doc->save();
             return response(["status" => 200, "message" => "OK"], 200);
         } else {
             return response(["status" => 400, "message" => "Bad Request"], 400);
@@ -128,7 +152,11 @@ class SignDocsController extends Controller
             "end_date" => $end_date,
             "file_url" => $file_url
         ];
-        PDF::loadView($application_template_name, ['data' => $data])->save(storage_path($file_path));
-        return $file_url;
+        $pdf = PDF::loadView($application_template_name, ['data' => $data])->save(storage_path($file_path));
+
+        $result["pdf"] = $pdf;
+        $result["file_url"] = $file_url;
+
+        return $result;
     }
 }

@@ -1,8 +1,8 @@
 <html>
 <head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
     <style type="text/css">
-        span.cls_002{font-family:"DejaVu Serif",serif;font-size:14.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
-        div.cls_002{font-family:"DejaVu Serif",serif;font-size:14.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+        span.cls_002{font-family:"DejaVu Serif",serif;font-size:12.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+        div.cls_002{font-family:"DejaVu Serif",serif;font-size:12.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
         span.cls_003{font-family:"DejaVu Serif",serif;font-size:12.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
         div.cls_003{font-family:"DejaVu Serif",serif;font-size:12.6px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
         span.cls_004{font-family:"DejaVu Serif",serif;font-size:12.6px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
@@ -29,7 +29,7 @@
             <div style="left:402.46px;top:238.80px" class="cls_002"><span class="cls_002">возрасту,государственных</span></div>
             <div style="left:428.05px;top:250.90px" class="cls_002"><span class="cls_002">специальных пособий</span></div>
         </div>
-        <div style="text-align: center; margin: 20px 0;" class="cls_003"><span class="cls_003">СПРАВКА</span></div>
+        <div style="text-align: center; margin: 10px 0;" class="cls_003"><span class="cls_003">СПРАВКА</span></div>
         <div style="left:103.77px;top:350.11px" class="cls_002"><span class="cls_002">Дана гр. </span><span class="cls_004">Дәурен Сабыров Болатұлы 01.09.1999</span><span class="cls_002"> г.р.</span></div>
         <div style="margin-left: 70px;" class="cls_005"><span class="cls_005">(Ф.И.О. обучающегося/студента, с указанием года рождения)</span></div>
         <div style="left:103.77px;top:374.14px" class="cls_002"><span class="cls_002">В том, что он(а) действительно является обучающимся</span></div>
@@ -43,7 +43,7 @@
         <div style="left:81.27px;top:481.70px" class="cls_002"><span class="cls_002">Государственной корпораций</span></div>
         <div style="left:81.27px;top:495.14px" class="cls_002"><span class="cls_002">Срок обучения в учебном заведении 4 года</span></div>
         <div style="left:81.27px;top:508.58px" class="cls_002"><span class="cls_002">Период обучения с 14.08.2017 г. по 15.06.2021 г.</span></div>
-        <div style="margin-top: 20px;" class="cls_004"><span class="cls_004">Примечание:</span><span class="cls_002"> справка действительна 1 год.</span></div>
+        <div style="margin-top: 10px;" class="cls_004"><span class="cls_004">Примечание:</span><span class="cls_002"> справка действительна 1 год.</span></div>
         <div style="left:81.27px;top:543.10px" class="cls_002"><span class="cls_002">В случае отчисления обучающегося из учебного заведения или перевода на</span></div>
         <div style="left:81.27px;top:556.54px" class="cls_002"><span class="cls_002">заочную форму обучения, руководитель учебного заведения извещает отделение</span></div>
         <div style="left:81.27px;top:569.99px" class="cls_002"><span class="cls_002">Государственной корпораций по месту жительства получателя пособия.</span></div>

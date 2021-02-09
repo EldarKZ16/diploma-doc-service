@@ -25,19 +25,19 @@
             <div style="left:378.88px;top:195.21px" class="cls_002"><span class="cls_002">потери кормильца и по возрасту»</span></div>
         </div>
         <div style="left:281.52px;top:311.37px;margin: 20px 0; text-align: center;" class="cls_003"><span class="cls_003">СПРАВКА</span></div>
-        <div style="left:103.77px;top:285.41px" class="cls_002"><span class="cls_002">Дана гр. </span><span class="cls_004">Дәурен Сабыров Болатұлы 01.09.1999</span><span class="cls_002"> г.р.</span></div>
+        <div style="left:103.77px;top:285.41px" class="cls_002"><span class="cls_002">Дана гр. </span><span class="cls_004">{{$data->full_name}} {{$data->birth_date}}</span><span class="cls_002"> г.р.</span></div>
         <div style="left:148.77px;top:278.88px;margin-left: 70px;" class="cls_005"><span class="cls_005">(Ф.И.О. обучающегося/студента, с указанием года рождения)</span></div>
         <div style="left:103.77px;top:289.44px" class="cls_002"><span class="cls_002">В том, что он(а) действительно является обучающимся</span></div>
         <div style="left:81.27px;top:302.89px" class="cls_002"><span class="cls_002">АО Международного университета информационных технологий</span></div>
-        <div style="left:81.27px;top:316.33px" class="cls_002"><span class="cls_002">«5B100200»-Системы информационной безопасности</span></div>
+        <div style="left:81.27px;top:316.33px" class="cls_002"><span class="cls_002">{{$data->specialty_code}}»-{{$data->specialty_name}}</span></div>
         <div style="left:81.27px;top:329.77px" class="cls_002"><span class="cls_002">Госуд.лицензия Серия АБ № 0064060 от 29.05.2009 год без ограничения срока</span></div>
-        <div style="left:81.27px;top:343.22px" class="cls_002"><span class="cls_002">4 класса/курса, форма обучения-очное.</span></div>
-        <div style="left:81.27px;top:356.66px" class="cls_002"><span class="cls_002">Справка действительна на 2020 - 2021 учебный год, с 1 сентября 2017 г. по 31</span></div>
+        <div style="left:81.27px;top:343.22px" class="cls_002"><span class="cls_002">{{$data->course_count}} класса/курса, форма обучения-очное.</span></div>
+        <div style="left:81.27px;top:356.66px" class="cls_002"><span class="cls_002">Справка действительна на {{$data->current_year}} учебный год, с 1 сентября 2017 г. по 31</span></div>
         <div style="left:81.27px;top:370.11px" class="cls_002"><span class="cls_002">августа 2021 г.</span></div>
         <div style="left:81.27px;top:383.55px" class="cls_002"><span class="cls_002">Справка выдана для предъявления в отделение</span></div>
         <div style="left:81.27px;top:397.00px" class="cls_002"><span class="cls_002">Государственной корпораций</span></div>
-        <div style="left:81.27px;top:410.44px" class="cls_002"><span class="cls_002">Срок обучения в учебном заведении 4 года</span></div>
-        <div style="left:81.27px;top:423.89px" class="cls_002"><span class="cls_002">Период обучения с 14.08.2017 г. по 15.06.2021 г.</span></div>
+        <div style="left:81.27px;top:410.44px" class="cls_002"><span class="cls_002">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
+        <div style="left:81.27px;top:423.89px" class="cls_002"><span class="cls_002">Период обучения {{$data->start_date}} г. по {{$data->end_date}}</span></div>
         <div style="left:81.27px;top:444.93px; margin-top: 30px;" class="cls_004"><span class="cls_004">Примечание:</span><span class="cls_002"> справка действительна 1 год.</span></div>
         <div style="left:81.27px;top:458.40px" class="cls_002"><span class="cls_002">В случае отчисления обучающегося из учебного заведения или перевода на</span></div>
         <div style="left:81.27px;top:471.84px" class="cls_002"><span class="cls_002">заочную форму обучения, руководитель учебного заведения извещает отделение Государственной корпораций по месту жительства получателя пособия.</span></div>

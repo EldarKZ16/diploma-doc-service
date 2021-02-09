@@ -30,19 +30,19 @@
             <div style="left:428.05px;top:250.90px" class="cls_002"><span class="cls_002">специальных пособий</span></div>
         </div>
         <div style="text-align: center; margin: 10px 0;" class="cls_003"><span class="cls_003">СПРАВКА</span></div>
-        <div style="left:103.77px;top:350.11px" class="cls_002"><span class="cls_002">Дана гр. </span><span class="cls_004">Дәурен Сабыров Болатұлы 01.09.1999</span><span class="cls_002"> г.р.</span></div>
+        <div style="left:103.77px;top:350.11px" class="cls_002"><span class="cls_002">Дана гр. </span><span class="cls_004">{{$data->full_name}} {{$data->birth_date}}</span><span class="cls_002"> г.р.</span></div>
         <div style="margin-left: 70px;" class="cls_005"><span class="cls_005">(Ф.И.О. обучающегося/студента, с указанием года рождения)</span></div>
         <div style="left:103.77px;top:374.14px" class="cls_002"><span class="cls_002">В том, что он(а) действительно является обучающимся</span></div>
         <div style="left:81.27px;top:387.58px" class="cls_002"><span class="cls_002">АО Международного университета информационных технологий</span></div>
-        <div style="left:81.27px;top:401.03px" class="cls_002"><span class="cls_002">«5B100200»-Системы информационной безопасности</span></div>
+        <div style="left:81.27px;top:401.03px" class="cls_002"><span class="cls_002">{{$data->specialty_code}}»-{{$data->specialty_name}}</span></div>
         <div style="left:81.27px;top:414.47px" class="cls_002"><span class="cls_002">Госуд.лицензия Серия АБ № 0064060 от 29.05.2009 год без ограничения срока</span></div>
         <div style="left:81.27px;top:427.92px" class="cls_002"><span class="cls_002">4 класса/курса, форма обучения-очное.</span></div>
-        <div style="left:81.27px;top:441.36px" class="cls_002"><span class="cls_002">Справка действительна на 2020 - 2021 учебный год, с 1 сентября 2017 г. по 31</span></div>
+        <div style="left:81.27px;top:441.36px" class="cls_002"><span class="cls_002">Справка действительна на {{$data->current_year}} учебный год, с 1 сентября 2017 г. по 31</span></div>
         <div style="left:81.27px;top:454.81px" class="cls_002"><span class="cls_002">августа 2021 г.</span></div>
         <div style="left:81.27px;top:468.25px" class="cls_002"><span class="cls_002">Справка выдана для предъявления в отделение</span></div>
         <div style="left:81.27px;top:481.70px" class="cls_002"><span class="cls_002">Государственной корпораций</span></div>
-        <div style="left:81.27px;top:495.14px" class="cls_002"><span class="cls_002">Срок обучения в учебном заведении 4 года</span></div>
-        <div style="left:81.27px;top:508.58px" class="cls_002"><span class="cls_002">Период обучения с 14.08.2017 г. по 15.06.2021 г.</span></div>
+        <div style="left:81.27px;top:495.14px" class="cls_002"><span class="cls_002">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
+        <div style="left:81.27px;top:508.58px" class="cls_002"><span class="cls_002">Период обучения с {{$data->start_date}} г. по {{$data->end_date}} г.</span></div>
         <div style="margin-top: 10px;" class="cls_004"><span class="cls_004">Примечание:</span><span class="cls_002"> справка действительна 1 год.</span></div>
         <div style="left:81.27px;top:543.10px" class="cls_002"><span class="cls_002">В случае отчисления обучающегося из учебного заведения или перевода на</span></div>
         <div style="left:81.27px;top:556.54px" class="cls_002"><span class="cls_002">заочную форму обучения, руководитель учебного заведения извещает отделение</span></div>

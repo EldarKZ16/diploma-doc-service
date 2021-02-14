@@ -44,9 +44,9 @@ class AuthController extends Controller
         $username = $request->get("username");
         $password = $request->get("password");
 
+        $campus_host = env("CAMPUS_URL", "https://campus.iitu.kz");
 
-        // TODO: remove hardcodes, ok for MVP
-        $campus_auth_response = Http::asForm()->post("https://campus.iitu.kz/auth/login", [
+        $campus_auth_response = Http::asForm()->post($campus_host."/auth/login", [
             "username" => $username,
             "password" => $password
         ]);
@@ -59,8 +59,8 @@ class AuthController extends Controller
 
             // Retrieve initial user data from campus
             $user_data_raw = Http::withCookies(
-                ["API-Token" => $campus_token], "campus.iitu.kz"
-            )->get("https://campus.iitu.kz/cleancoredb/user/byname/".$username);
+                ["API-Token" => $campus_token], parse_url($campus_host)['host']
+            )->get($campus_host."/cleancoredb/user/byname/".$username);
 
             $user_data = $user_data_raw->json();
 
@@ -90,8 +90,8 @@ class AuthController extends Controller
                     $campus_user_id = $user_data["data"]["userId"];
 
                     $full_user_data = Http::withCookies(
-                        ["API-Token" => $campus_token], "campus.iitu.kz"
-                    )->get("https://campus.iitu.kz/joincoredb/user/".$campus_user_id)->json();
+                        ["API-Token" => $campus_token], parse_url($campus_host)['host']
+                    )->get($campus_host."/joincoredb/user/".$campus_user_id)->json();
 
                     $user->campus_user_data = json_encode($full_user_data["data"], JSON_UNESCAPED_UNICODE);
                     $user->save();

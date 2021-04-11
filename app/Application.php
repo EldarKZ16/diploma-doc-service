@@ -36,12 +36,7 @@ class Application extends Model
 
     public function getCreatedAtAttribute($date)
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y');
-    }
-
-    public function getUpdatedAtAttribute($date)
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y');
+        return Carbon::parse($date)->format('d.m.Y');
     }
 
     public function applicationType() {

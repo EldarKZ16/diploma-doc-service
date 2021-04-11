@@ -19,7 +19,7 @@ class ApplicationController extends Controller
     //
     public function showApplications(Request $request) {
         $user = $request->user();
-        $applications = Application::where('applicant_user_id', $user->id)->get();
+        $applications = Application::where('applicant_user_id', $user->id)->orderBy('created_at', 'desc')->get();
         return response($applications);
     }
 

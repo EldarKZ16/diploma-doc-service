@@ -47,11 +47,11 @@
         <div style="left:81.27px;top:543.10px" class="cls_002"><span class="cls_002">В случае отчисления обучающегося из учебного заведения или перевода на</span></div>
         <div style="left:81.27px;top:556.54px" class="cls_002"><span class="cls_002">заочную форму обучения, руководитель учебного заведения извещает отделение</span></div>
         <div style="left:81.27px;top:569.99px" class="cls_002"><span class="cls_002">Государственной корпораций по месту жительства получателя пособия.</span></div>
-        <div style="left:103.77px;top:626.33px; margin-top: 30px; margin-left: 20px;" class="cls_004"><span style="margin-right: 200px;" class="cls_004">Проректор по АиВД</span> <span class="cls_004">Умаров Тимур Фаридович</span></div>
-        <div style="left:81.27px;top:771.05px; margin-top: 30px;" class="cls_005"><span class="cls_005">Исп: Самат А.</span>
+        <div style="left:103.77px;top:626.33px; margin-top: 30px; margin-left: 20px;" class="cls_004"><span style="margin-right: 200px;" class="cls_004">Проректор по АиВД</span> <span class="cls_004">{{$data->vice_rector_of_aivd_name}}</span></div>
+        <div style="left:81.27px;top:771.05px; margin-top: 30px;" class="cls_005"><span class="cls_005">Исп: {{$data->executor_name}}</span>
             <img style="margin-left: 320px;" src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(125)->generate($data->file_url)) !!} ">
         </div>
-        <div style="left:81.27px;top:781.61px" class="cls_005"><span class="cls_005">Тел.: 330-85-67 (внут.2063)</span></div>
+        <div style="left:81.27px;top:781.61px" class="cls_005"><span class="cls_005">Тел.: {{$data->phone_number}}</span></div>
     </div>
 
 </body>

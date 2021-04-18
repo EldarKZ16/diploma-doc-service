@@ -27,6 +27,8 @@ Route::get('/v1/roles', 'Api\RoleController@index');
 
 Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'ADMIN'], function (){
     Route::apiResource('v1/users', 'Api\UserController');
+    Route::apiResource('v1/static-vars', 'Api\StaticVarsController');
+    Route::get('v1/applications/all',   [ApplicationController::class, 'index']);
 });
 
 
@@ -47,5 +49,7 @@ Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'DEAN'], func
 });
 
 Route::get('v1/signed-application/{file_name}', [ApplicationController::class, 'getPDFReport']);
+
+Route::get('v1/statistics', [ApplicationController::class, 'getStatistics']);
 
 

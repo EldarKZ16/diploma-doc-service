@@ -27,11 +27,11 @@
         <div style="left:81.27px;top:536.00px" class="cls_003"><span class="cls_003">Срок обучения в учебном заведении {{$data->course_count}} года</span></div>
         <div style="left:81.27px;top:560.44px" class="cls_003"><span class="cls_003">Период обучения с {{$data->start_date}} г. по {{$data->end_date}} г.</span></div>
 
-        <div style="left:103.77px;top:626.33px; margin-top: 30px; margin-left: 20px;" class="cls_004"><span style="margin-right: 200px;" class="cls_004">Декан</span> <span class="cls_004">Мукажанов Н.К.</span></div>
-        <div style="left:81.27px;top:771.05px; margin-top: 30px;" class="cls_005"><span class="cls_005">Исп: Самат А.</span>
+        <div style="left:103.77px;top:626.33px; margin-top: 30px; margin-left: 20px;" class="cls_004"><span style="margin-right: 200px;" class="cls_004">Декан</span> <span class="cls_004">{{$data->dean_name}}</span></div>
+        <div style="left:81.27px;top:771.05px; margin-top: 30px;" class="cls_005"><span class="cls_005">Исп: {{$data->executor_name}}</span>
             <img style="margin-left: 200px;" src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(125)->generate($data->file_url)) !!} ">
         </div>
-        <div style="left:81.27px;top:781.61px" class="cls_005"><span class="cls_005">Тел.: 330-85-67 (внут.2063)</span></div>
+        <div style="left:81.27px;top:781.61px" class="cls_005"><span class="cls_005">Тел.: {{$data->phone_number}}</span></div>
     </div>
 </div>
 

@@ -22,6 +22,10 @@ class AuthController extends Controller
             return response(['status' => 401, 'message' => 'Invalid Credentials'], 401);
         }
 
+        if (auth()->user()->role == "STUDENT") {
+            return response(["status" => 403, "message" => "Not allowed, use students login"], 403);
+        }
+
         $access_token = auth()->user()->createToken('authToken')->accessToken;
 
         $user = auth()->user();

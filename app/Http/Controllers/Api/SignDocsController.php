@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\SignDocs;
+use App\StaticVars;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use DateTime;
@@ -140,6 +141,13 @@ class SignDocsController extends Controller
         $end_date = "30.06.".(date('Y', strtotime($start_date . "+".$course_count."years")));
 
         $full_name = $user_data["lastname"]." ".$user_data["firstname"]." ".$user_data["middlename"];
+
+        $dean_name = StaticVars::where('name', 'dean_name')->first()->value;
+        $executor_name = StaticVars::where('name', 'executor_name')->first()->value;
+        $phone_number = StaticVars::where('name', 'phone_number')->first()->value;
+        $vice_rector_of_aivd_name = StaticVars::where('name', 'vice_rector_of_aivd_name')->first()->value;
+
+
         $data = (object) [
             "full_name" => $full_name,
             "birth_date" => $birth_date,
@@ -150,7 +158,11 @@ class SignDocsController extends Controller
             "current_year" => $current_year,
             "start_date" => $start_date,
             "end_date" => $end_date,
-            "file_url" => $file_url
+            "file_url" => $file_url,
+            "dean_name" => $dean_name,
+            "executor_name" => $executor_name,
+            "phone_number" => $phone_number,
+            "vice_rector_of_aivd_name" => $vice_rector_of_aivd_name
         ];
         $pdf = PDF::loadView($application_template_name, ['data' => $data])->save(storage_path($file_path));
 

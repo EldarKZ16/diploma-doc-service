@@ -99,7 +99,7 @@ class UserController extends Controller
 
     public function showCampusInfo($id)
     {
-        if (auth()->user()->role == "STUDENT" && auth()->user()->id != $id) {
+        if (auth()->user()->role->name == "STUDENT" && auth()->user()->id != $id) {
             return response(["status" => 403, "message" => "Forbidden"], 403);
         }
 

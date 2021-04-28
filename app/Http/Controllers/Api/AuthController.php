@@ -22,7 +22,7 @@ class AuthController extends Controller
             return response(['status' => 401, 'message' => 'Invalid Credentials'], 401);
         }
 
-        if (auth()->user()->role == "STUDENT") {
+        if (auth()->user()->role->name == "STUDENT") {
             return response(["status" => 403, "message" => "Not allowed, use students login"], 403);
         }
 
@@ -43,7 +43,7 @@ class AuthController extends Controller
             return response(['status' => 401, 'message' => 'Invalid Credentials'], 401);
         }
 
-        if (auth()->user()->role == "STUDENT") {
+        if (auth()->user()->role->name == "STUDENT") {
             return response(["status" => 403, "message" => "Not allowed, use students login"], 403);
         }
 

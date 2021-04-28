@@ -32,6 +32,25 @@ class AuthController extends Controller
         return response(["user_context" => $user, 'access_token' => $access_token]);
     }
 
+    public function verifySigning(Request $request)
+    {
+        $login_data = $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (!auth()->attempt($login_data)) {
+            return response(['status' => 401, 'message' => 'Invalid Credentials'], 401);
+        }
+
+        if (auth()->user()->role == "STUDENT") {
+            return response(["status" => 403, "message" => "Not allowed, use students login"], 403);
+        }
+
+        $user = auth()->user();
+        return response(["status" => 200, "message" => "OK", "user_context" => $user], 200);
+    }
+
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();

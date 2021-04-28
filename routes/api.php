@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth:api']], function (){
     Route::apiResource('v1/application-types', 'Api\ApplicationTypeController');
     Route::get('v1/application/{id}', [ApplicationController::class, 'show']);
     Route::get('v1/user/campus-info/{id}', [UserController::class, 'showCampusInfo']);
+    Route::post('/v1/verify-signing', 'Api\AuthController@verifySigning');
 });
 
 Route::group(['middleware' => ['auth:api'], 'role' => 'STUDENT'], function (){

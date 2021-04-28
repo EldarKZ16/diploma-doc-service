@@ -104,7 +104,7 @@ class UserController extends Controller
         }
 
         $user = User::findOrFail($id);
-        return response([$user->campus_user_data]);
+        return response()->json($user->campus_user_data, 200);
     }
 
     public function getContext(Request $request)

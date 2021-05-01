@@ -6,6 +6,7 @@ use Amir\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
@@ -34,20 +35,24 @@ class AuthController extends Controller
 
     public function verifySigning(Request $request)
     {
-        $login_data = $request->validate([
+        $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
 
-        if (!auth()->attempt($login_data)) {
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        $user = User::where('username', '=', $username)->first();
+
+        if (!$user || !Hash::check($password, $user->password)) {
             return response(['status' => 401, 'message' => 'Invalid Credentials'], 401);
         }
 
-        if (auth()->user()->role->name == "STUDENT") {
+        if ($user->role->name == "STUDENT") {
             return response(["status" => 403, "message" => "Not allowed, use students login"], 403);
         }
 
-        $user = auth()->user();
         return response(["status" => 200, "message" => "OK", "user_context" => $user], 200);
     }
 

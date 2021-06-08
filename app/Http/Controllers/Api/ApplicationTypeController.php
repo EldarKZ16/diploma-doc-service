@@ -52,8 +52,8 @@ class ApplicationTypeController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'signer_orders' => 'nullable|array',
-            'signer_orders.*' => 'numeric|distinct|exists:roles,id'
+            'signer_orders' => 'required|array',
+            'signer_orders.*' => 'required|numeric|distinct|exists:roles,id'
         ]);
 
         $application_type = ApplicationType::findOrFail($id);

@@ -99,13 +99,8 @@ class UserController extends Controller
 
     public function showCampusInfo($id)
     {
-        if (auth()->user()->role->name == "STUDENT" && auth()->user()->id != $id) {
-            return response(["status" => 403, "message" => "Forbidden"], 403);
-        }
-
         $user = User::findOrFail($id);
-        $user_data = json_decode($user->campus_user_data, true);
-        return response($user_data);
+        return response($user);
     }
 
     public function getContext(Request $request)

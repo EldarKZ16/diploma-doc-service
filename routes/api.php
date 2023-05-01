@@ -20,17 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/v1/student-login', 'Api\AuthController@loginCampus')->middleware("throttle:5,1");
 
-Route::post('/v1/login', 'Api\AuthController@login')->middleware("throttle:5,1");
+Route::post('/v1/login', 'Api\AuthController@login');
 Route::post('/v1/logout', 'Api\AuthController@logout')->middleware(['auth:api']);
 Route::middleware(['auth:api'])->get('/v1/user-context', 'Api\UserController@getContext');
 
 Route::get('/v1/roles', 'Api\RoleController@index');
 
-Route::group(['middleware' => ['auth:api', 'role_auth'], 'role' => 'ADMIN'], function (){
-    Route::apiResource('v1/users', 'Api\UserController');
-    Route::apiResource('v1/static-vars', 'Api\StaticVarsController');
-    Route::get('v1/applications/all',   [ApplicationController::class, 'index']);
-});
+Route::apiResource('v1/users', 'Api\UserController');
+Route::apiResource('v1/static-vars', 'Api\StaticVarsController');
+Route::get('v1/applications/all',   [ApplicationController::class, 'index']);
 
 
 Route::group(['middleware' => ['auth:api']], function (){
